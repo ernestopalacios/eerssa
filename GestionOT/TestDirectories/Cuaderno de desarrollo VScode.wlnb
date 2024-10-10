@@ -1,0 +1,818 @@
+{
+ "cells": [
+  {
+   "kind": 1,
+   "value": "# Cuaderno de acompañamiento al desarrollo de GestionOT.wl",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "### Variables Globales",
+   "languageId": "markdown",
+   "mime": "text/markdown",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>Globales</w><w></w><w>Variables</w><w></w><w>#1</w><w></w><w>##1</w></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Globales*Variables*#1*##1",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "b9d15fef-f61b-4e3b-8799-c5e8e6918a5c",
+     "metadata": {
+      "cellLabel": "Out[118]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "raizAdminOT     = FileNameJoin[{$HomeDirectory,\"GIT\",\"admin_OT\"}];\r\nraizTestOT      = FileNameJoin[{$HomeDirectory,\"GIT\",\"admin_ot\",\"TestDirectories\"}];\r\nraizTestImport  = FileNameJoin[{$HomeDirectory,\"GIT\",\"admin_ot\",\"TestDirectories\",\"0_ImportPdfOT\"}];",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {
+    "custom": {
+     "metadata": {
+      "tags": [
+       "parameters"
+      ]
+     }
+    }
+   },
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "## Pruebas para ImportPdfOT\r\n\r\n\r\nSe cargar seis archivos en PDF para probar la función de importación.\r\n\r\n1. Listado de PDFS con `getPDFList[]`\r\n\r\n",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "On[Assert]\r\nGet[FileNameJoin[{$HomeDirectory,\"GIT\",\"admin_OT\",\"Packages\",\"GestionarOT.wl\"}]];\r\ntestImport = getPdfList[raizTestImport]\r\nOff[Assert]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<pre><span class=\"wl-message\">Import::noelem</span>: \n   The Import element \"PageCount\" is not present when importing as Text.</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Import::noelem: \n   The Import element \"PageCount\" is not present when importing as Text.",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "a1c96721-8d84-4513-a2ec-e17e033c87b3",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    },
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>C:\\Users\\epalacios\\GIT\\admin_ot\\TestDirectories\\0_ImportPdfOT\\1_not_pdf.pdf</w><w>,</w><w>C:\\Users\\epalacios\\GIT\\admin_ot\\TestDirectories\\0_ImportPdfOT\\2_Arjan_software_design_guide.pdf</w><w>,</w><w>C:\\Users\\epalacios\\GIT\\admin_ot\\TestDirectories\\0_ImportPdfOT\\3_ok_cl_21_items.pdf</w><w>,</w><w>C:\\Users\\epalacios\\GIT\\admin_ot\\TestDirectories\\0_ImportPdfOT\\4_page1_full_no_activities.pdf</w><w>,</w><w>C:\\Users\\epalacios\\GIT\\admin_ot\\TestDirectories\\0_ImportPdfOT\\5_page2_no_time.pdf</w><w>,</w><w>C:\\Users\\epalacios\\GIT\\admin_ot\\TestDirectories\\0_ImportPdfOT\\6_date_time_YQ.pdf</w><w>,</w><w>C:\\Users\\epalacios\\GIT\\admin_ot\\TestDirectories\\0_ImportPdfOT\\7_one_line_text_overlap.pdf</w><w>,</w><w>C:\\Users\\epalacios\\GIT\\admin_ot\\TestDirectories\\0_ImportPdfOT\\8_bad_line_text_overlap.pdf</w></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{\"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_ot\\\\TestDirectories\\\\0_ImportPdfOT\\\\1_not_pdf.pdf\", \"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_ot\\\\TestDirectories\\\\0_ImportPdfOT\\\\2_Arjan_software_design_guide.pdf\", \"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_ot\\\\TestDirectories\\\\0_ImportPdfOT\\\\3_ok_cl_21_items.pdf\", \"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_ot\\\\TestDirectories\\\\0_ImportPdfOT\\\\4_page1_full_no_activities.pdf\", \"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_ot\\\\TestDirectories\\\\0_ImportPdfOT\\\\5_page2_no_time.pdf\", \"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_ot\\\\TestDirectories\\\\0_ImportPdfOT\\\\6_date_time_YQ.pdf\", \"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_ot\\\\TestDirectories\\\\0_ImportPdfOT\\\\7_one_line_text_overlap.pdf\", \"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_ot\\\\TestDirectories\\\\0_ImportPdfOT\\\\8_bad_line_text_overlap.pdf\"}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "f0aaf2bd-15bf-46c1-b4fe-cfd356381e62",
+     "metadata": {
+      "cellLabel": "Out[140]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697832628370,
+     "endTime": 1697832628970
+    },
+    "executionOrder": 138,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "On[Assert]\r\ndataOT = ImportPdfOT[ testImport[[5]] ]\r\nOff[Assert]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>cuadrilla</w><w class=\"symbol\"></w><w>Zamora (Agencia)</w></wrow><w>,</w><wrow><w></w><w>gerencia</w><w class=\"symbol\"></w><w>COMERCIALIZACION</w></wrow><w>,</w><wrow><w></w><w>responsable</w><w class=\"symbol\"></w><wrow><w></w><w>Missing</w><wrow><w></w><wb>[</wb><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><w>colaboradores</w><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><wb>}</wb></wrow></wrow><w>,</w><wrow><w></w><w>fecha</w><w class=\"symbol\"></w><wrow><w></w><w>DateObject</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>2022</w><w>,</w><w>2</w><w>,</w><w>11</w></wrow><wb>}</wb></wrow><w>,</w><w>Day</w></wrow><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><w>fechaInicio</w><w class=\"symbol\"></w><wrow><w></w><w>DateObject</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>2022</w><w>,</w><w>2</w><w>,</w><w>12</w></wrow><wb>}</wb></wrow><w>,</w><w>Day</w></wrow><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><w>duracion</w><w class=\"symbol\"></w><w>3</w></wrow><w>,</w><wrow><w></w><w>horaFinal</w><w class=\"symbol\"></w><wrow><w></w><w>DateObject</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>2022</w><w>,</w><w>2</w><w>,</w><w>11</w><w>,</w><w>23</w><w>,</w><w>0</w><w>,</w><w>0</w></wrow><wb>}</wb></wrow><w>,</w><w>Instant</w><w>,</w><w>Gregorian</w><w>,</w><wrow><w></w><w>-</w><w>5.</w></wrow></wrow><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><w>lugares</w><w class=\"symbol\"></w><w>Zamora</w></wrow><w>,</w><wrow><w></w><w>descripcion</w><w class=\"symbol\"></w><w>En Zamora, permanecer en la zona ante cualquier novedad en las redes electricas. Atender daños reportados por el Centro de Control</w></wrow><w>,</w><wrow><w></w><w>vehiculo</w><w class=\"symbol\"></w><w>2-110</w></wrow><w>,</w><wrow><w></w><w>propietario</w><w class=\"symbol\"></w><w>EERSSA</w></wrow><w>,</w><wrow><w></w><w>chofer</w><w class=\"symbol\"></w><w>MACAS CURIPOMA RAMIRO HOMERO</w></wrow><w>,</w><wrow><w></w><w>kmInicial</w><w class=\"symbol\"></w><w>0</w></wrow><w>,</w><wrow><w></w><w>kmFinal</w><w class=\"symbol\"></w><w>0</w></wrow><w>,</w><wrow><w></w><w>actividades</w><w class=\"symbol\"></w><wrow><w></w><w>Missing</w><wrow><w></w><wb>[</wb><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><w>cuentas</w><w class=\"symbol\"></w><wrow><w></w><w>Missing</w><wrow><w></w><wb>[</wb><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><w>horasExtra</w><w class=\"symbol\"></w><wrow><w></w><w>Missing</w><wrow><w></w><wb>[</wb><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><w>precauciones</w><w class=\"symbol\"></w><w>Tomarnos temperatura, utilizar mascarilla, guantes, alcohol y mas insumos sanitarios para evitar contagios de COVID-19</w></wrow><w>,</w><wrow><w></w><w>carencias</w><w class=\"symbol\"></w><wrow><w></w><w>Missing</w><wrow><w></w><wb>[</wb><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><w>accidentes</w><w class=\"symbol\"></w><w>False</w></wrow><w>,</w><wrow><w></w><w>observaciones</w><w class=\"symbol\"></w><wrow><w></w><w>Missing</w><wrow><w></w><wb>[</wb><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><w>numeracion</w><w class=\"symbol\"></w><w>17</w></wrow><w>,</w><wrow><w></w><w>id</w><w class=\"symbol\"></w><w>81013</w></wrow><w>,</w><wrow><w></w><w>estado</w><w class=\"symbol\"></w><w>TERMINADO</w></wrow><w>,</w><wrow><w></w><w>modificado</w><w class=\"symbol\"></w><wrow><w></w><w>DateObject</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>2023</w><w>,</w><w>10</w><w>,</w><w>20</w><w>,</w><w>15</w><w>,</w><w>10</w><w>,</w><w>30.1886869`9.232419130509978</w></wrow><wb>}</wb></wrow><w>,</w><w>Instant</w><w>,</w><w>Gregorian</w><w>,</w><wrow><w></w><w>-</w><w>5.</w></wrow></wrow><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><w>link</w><w class=\"symbol\"></w><w>C:\\Users\\epalacios\\GIT\\admin_ot\\TestDirectories\\0_ImportPdfOT\\5_page2_no_time.pdf</w></wrow></wrow><wb></wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Association[\"cuadrilla\" -> \"Zamora (Agencia)\", \"gerencia\" -> \"COMERCIALIZACION\", \"responsable\" -> Missing[], \"colaboradores\" -> {}, \"fecha\" -> DateObject[{2022, 2, 11}, \"Day\"], \"fechaInicio\" -> DateObject[{2022, 2, 12}, \"Day\"], \"duracion\" -> \"3\", \"horaFinal\" -> DateObject[{2022, 2, 11, 23, 0, 0}, \"Instant\", \"Gregorian\", -5.], \"lugares\" -> \"Zamora\", \"descripcion\" -> \"En Zamora, permanecer en la zona ante cualquier novedad en las redes electricas. Atender daños reportados por el Centro de Control\", \"vehiculo\" -> \"2-110\", \"propietario\" -> \"EERSSA\", \"chofer\" -> \"MACAS CURIPOMA RAMIRO HOMERO\", \"kmInicial\" -> 0, \"kmFinal\" -> 0, \"actividades\" -> Missing[], \"cuentas\" -> Missing[], \"horasExtra\" -> Missing[], \"precauciones\" -> \"Tomarnos temperatura, utilizar mascarilla, guantes, alcohol y mas insumos sanitarios para evitar contagios de COVID-19\", \"carencias\" -> Missing[], \"accidentes\" -> False, \"observaciones\" -> Missing[], \"numeracion\" -> 17, \"id\" -> 81013, \"estado\" -> \"TERMINADO\", \"modificado\" -> DateObject[{2023, 10, 20, 15, 10, 30.1886869`9.232419130509978}, \"Instant\", \"Gregorian\", -5.], \"link\" -> \"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_ot\\\\TestDirectories\\\\0_ImportPdfOT\\\\5_page2_no_time.pdf\"]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "f98f3a17-7dc6-4d98-92cc-8af00f1efb4e",
+     "metadata": {
+      "cellLabel": "Out[143]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697832630012,
+     "endTime": 1697832630418
+    },
+    "executionOrder": 142,
+    "success": true
+   }
+  },
+  {
+   "kind": 1,
+   "value": "## Python -> wolframEngine",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "### ¿Cómo Instalar?\r\nGuia: [https://reference.wolfram.com/language/workflow/ConfigurePythonForExternalEvaluate.html](enlace)\r\n",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "(* Direccion donde esta instalado Python *)\r\nosPythonPath = \"C:\\\\Users\\\\epalacios\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\python.exe\"",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>C:\\Users\\epalacios\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"C:\\\\Users\\\\epalacios\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\python.exe\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "511737d0-990f-4ab7-90aa-1fd0acbc1f17",
+     "metadata": {
+      "cellLabel": "Out[153]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697836461335,
+     "endTime": 1697836461504
+    },
+    "executionOrder": 153,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "RegisterExternalEvaluator[\"Python\", osPythonPath]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>9715ea82-93e3-7400-c215-51c03d0facb8</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"9715ea82-93e3-7400-c215-51c03d0facb8\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "8410c27c-37c3-43a9-85e7-f20b4671757e",
+     "metadata": {
+      "cellLabel": "Out[154]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697836465218,
+     "endTime": 1697836472150
+    },
+    "executionOrder": 154,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "(* Validar que se ha instalado correctamente *)\r\nFindExternalEvaluators[\"Python\"]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>Dataset</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><wb></wb><wrow><w></w><w>9715ea82-93e3-7400-c215-51c03d0facb8</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>System</w><w class=\"symbol\"></w><w>Python</w></wrow><w>,</w><wrow><w></w><w>Version</w><w class=\"symbol\"></w><w>3.11.6</w></wrow><w>,</w><wrow><w></w><w>Target</w><w class=\"symbol\"></w><w>C:\\Users\\epalacios\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe</w></wrow><w>,</w><wrow><w></w><w>Executable</w><w class=\"symbol\"></w><w>C:\\Users\\epalacios\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe</w></wrow><w>,</w><wrow><w></w><w>Registered</w><w class=\"symbol\"></w><w>True</w></wrow></wrow><wb></wb></wrow></wrow><wb></wb></wrow><w>,</w><wrow><w></w><w>TypeSystem`Assoc</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><w>TypeSystem`Atom</w><wrow><w></w><wb>[</wb><w>String</w><wb>]</wb></wrow></wrow><w>,</w><wrow><w></w><w>TypeSystem`Struct</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>System</w><w>,</w><w>Version</w><w>,</w><w>Target</w><w>,</w><w>Executable</w><w>,</w><w>Registered</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><w>TypeSystem`Atom</w><wrow><w></w><wb>[</wb><w>String</w><wb>]</wb></wrow></wrow><w>,</w><wrow><w></w><w>TypeSystem`Atom</w><wrow><w></w><wb>[</wb><w>String</w><wb>]</wb></wrow></wrow><w>,</w><wrow><w></w><w>TypeSystem`Atom</w><wrow><w></w><wb>[</wb><w>String</w><wb>]</wb></wrow></wrow><w>,</w><wrow><w></w><w>TypeSystem`Atom</w><wrow><w></w><wb>[</wb><w>String</w><wb>]</wb></wrow></wrow><w>,</w><wrow><w></w><w>TypeSystem`Atom</w><wrow><w></w><wb>[</wb><w>TypeSystem`Boolean</w><wb>]</wb></wrow></wrow></wrow><wb>}</wb></wrow></wrow><wb>]</wb></wrow></wrow><w>,</w><w>1</w></wrow><wb>]</wb></wrow></wrow><w>,</w><wrow><w></w><wb></wb><wrow><w></w><w>HiddenItems</w><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><w>Executable</w><wb>}</wb></wrow></wrow><wb></wb></wrow></wrow><wb>]</wb></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Dataset[Association[\"9715ea82-93e3-7400-c215-51c03d0facb8\" -> Association[\"System\" -> \"Python\", \"Version\" -> \"3.11.6\", \"Target\" :> \"C:\\\\Users\\\\epalacios\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\python.exe\", \"Executable\" :> \"C:\\\\Users\\\\epalacios\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\python.exe\", \"Registered\" -> True]], TypeSystem`Assoc[TypeSystem`Atom[String], TypeSystem`Struct[{\"System\", \"Version\", \"Target\", \"Executable\", \"Registered\"}, {TypeSystem`Atom[String], TypeSystem`Atom[String], TypeSystem`Atom[String], TypeSystem`Atom[String], TypeSystem`Atom[TypeSystem`Boolean]}], 1], Association[HiddenItems -> {\"Executable\"}]]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "642089e3-305d-4b98-b5f6-831588e8eac2",
+     "metadata": {
+      "cellLabel": "Out[155]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697836475936,
+     "endTime": 1697836476281
+    },
+    "executionOrder": 155,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "(* Test the external evaluator *)\r\nExternalEvaluate[\"Python\",\"2+2\"]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>4</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "4",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "e0f96dfd-9c6a-4923-9297-0cab1d1b8769",
+     "metadata": {
+      "cellLabel": "Out[156]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697836530422,
+     "endTime": 1697836532786
+    },
+    "executionOrder": 156,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "(* Install Python Libraries *)\r\nResourceFunction[\"PythonPackageInstall\"][{\"tabulate\", \"tabula-py\", \"openpyxl\"}]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><wrow><w></w><w>Success</w><wrow><w></w><wb>[</wb><wrow><w></w><w>PythonPackageInstalled</w><w>,</w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>MessageTemplate</w><w class=\"symbol\"></w><w>The installation of \"`name`\" is complete.</w></wrow><w>,</w><wrow><w></w><w>MessageParameters</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><w>name</w><w class=\"symbol\"></w><w>tabulate</w></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>InstalledDependencies</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wb></wb></wrow></wrow></wrow><wb></wb></wrow></wrow><wb>]</wb></wrow></wrow><w>,</w><wrow><w></w><w>Success</w><wrow><w></w><wb>[</wb><wrow><w></w><w>PythonPackageAlreadyInstalled</w><w>,</w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>MessageTemplate</w><w class=\"symbol\"></w><w>The Python package \"`name`\" is already installed.</w></wrow><w>,</w><wrow><w></w><w>MessageParameters</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><w>name</w><w class=\"symbol\"></w><w>tabula-py</w></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>Version</w><w class=\"symbol\"></w><w>2.7.0</w></wrow><w>,</w><wrow><w></w><w>Location</w><w class=\"symbol\"></w><w>C:\\Users\\epalacios\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages</w></wrow></wrow><wb></wb></wrow></wrow><wb>]</wb></wrow></wrow><w>,</w><wrow><w></w><w>Success</w><wrow><w></w><wb>[</wb><wrow><w></w><w>PythonPackageAlreadyInstalled</w><w>,</w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>MessageTemplate</w><w class=\"symbol\"></w><w>The Python package \"`name`\" is already installed.</w></wrow><w>,</w><wrow><w></w><w>MessageParameters</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><w>name</w><w class=\"symbol\"></w><w>openpyxl</w></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>Version</w><w class=\"symbol\"></w><w>3.1.2</w></wrow><w>,</w><wrow><w></w><w>Location</w><w class=\"symbol\"></w><w>C:\\Users\\epalacios\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages</w></wrow></wrow><wb></wb></wrow></wrow><wb>]</wb></wrow></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{Success[\"PythonPackageInstalled\", Association[\"MessageTemplate\" :> \"The installation of \\\"`name`\\\" is complete.\", \"MessageParameters\" -> Association[\"name\" -> \"tabulate\"], \"InstalledDependencies\" -> Association[]]], Success[\"PythonPackageAlreadyInstalled\", Association[\"MessageTemplate\" :> \"The Python package \\\"`name`\\\" is already installed.\", \"MessageParameters\" -> Association[\"name\" -> \"tabula-py\"], \"Version\" -> \"2.7.0\", \"Location\" -> \"C:\\\\Users\\\\epalacios\\\\AppData\\\\Local\\\\Packages\\\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\\\LocalCache\\\\local-packages\\\\Python311\\\\site-packages\"]], Success[\"PythonPackageAlreadyInstalled\", Association[\"MessageTemplate\" :> \"The Python package \\\"`name`\\\" is already installed.\", \"MessageParameters\" -> Association[\"name\" -> \"openpyxl\"], \"Version\" -> \"3.1.2\", \"Location\" -> \"C:\\\\Users\\\\epalacios\\\\AppData\\\\Local\\\\Packages\\\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\\\LocalCache\\\\local-packages\\\\Python311\\\\site-packages\"]]}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "03060f48-abc8-4747-a65b-9695c6120782",
+     "metadata": {
+      "cellLabel": "Out[157]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697836748918,
+     "endTime": 1697836774474
+    },
+    "executionOrder": 157,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "GetActividadesPy = ExternalFunction[\"Python\",\r\n\"import tabula; def extractActivities(dir, output, code): ot = tabula.read_pdf( dir, pages=[2], relative_area=True, relative_columns=True, area=[9.5,0,80,100], columns=[7.10, 13.80, 57.14, 60.71, 73.57, 81.55, 88.57], encoding=code); return(ot[0]);\"]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>ExternalFunction</w><wrow><w></w><wb>[</wb><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>System</w><w class=\"symbol\"></w><w>Python</w></wrow><w>,</w><wrow><w></w><w>Command</w><w class=\"symbol\"></w><w>import tabula; def extractActivities(dir, output, code): ot = tabula.read_pdf( dir, pages=[2], relative_area=True, relative_columns=True, area=[9.5,0,80,100], columns=[7.10, 13.80, 57.14, 60.71, 73.57, 81.55, 88.57], encoding=code); return(ot[0]);</w></wrow><w>,</w><wrow><w></w><w>Session</w><w class=\"symbol\"></w><w>Automatic</w></wrow></wrow><wb></wb></wrow><wb>]</wb></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "ExternalFunction[Association[\"System\" -> \"Python\", \"Command\" -> \"import tabula; def extractActivities(dir, output, code): ot = tabula.read_pdf( dir, pages=[2], relative_area=True, relative_columns=True, area=[9.5,0,80,100], columns=[7.10, 13.80, 57.14, 60.71, 73.57, 81.55, 88.57], encoding=code); return(ot[0]);\", \"Session\" -> Automatic]]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "38c910fe-7086-4e38-9b51-f2fb920fa451",
+     "metadata": {
+      "cellLabel": "Out[166]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697837330064,
+     "endTime": 1697837330262
+    },
+    "executionOrder": 166,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "tabula = StartExternalSession[\"Python\"]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>ExternalSessionObject</w><wrow><w></w><wb>[</wb><w>e559a7a7-f3c8-4a2e-8094-5fce6cd1d476</w><wb>]</wb></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "ExternalSessionObject[\"e559a7a7-f3c8-4a2e-8094-5fce6cd1d476\"]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "88fb6771-d5f4-4f5a-883b-72353f7548d7",
+     "metadata": {
+      "cellLabel": "Out[174]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697838334316,
+     "endTime": 1697838335324
+    },
+    "executionOrder": 174,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "ExternalEvaluate[tabula, \"import tabula\"]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697838401907,
+     "endTime": 1697838407466
+    },
+    "executionOrder": 175,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "act1 = ExternalEvaluate[tabula, \"tabula.read_pdf( \\\"C:\\\\\\\\Users\\\\\\\\epalacios\\\\\\\\GIT\\\\\\\\admin_ot\\\\\\\\TestDirectories\\\\\\\\0_ImportPdfOT\\\\\\\\3_ok_cl_21_items.pdf\\\", pages=[2], relative_area=True, relative_columns=True, area=[9.5,0,80,100], columns=[7.10, 13.80, 57.14, 60.71, 73.57, 81.55, 88.57],encoding=\\\"latin1\\\")\" ]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>Dataset</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>0</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>1.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>DEL CENTRO DE CONTROL INFORMAN QUE EN LOS SECTORES DE</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>1</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>YAWINTS Y DE ROLDOS SE ENCUENTRAN SIN SERVICIO ELÉCTRICO</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>2</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>2.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Medición de temperatura corporal: César Lituma: 36.0°C; Cristian</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>PREVENTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>3</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Buele: 36.0°C; Helio Orellana (chofer): 36.0°C y se carga materiales</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>10:15:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>10:30:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>4</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>y herramientas en el vehículo.</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>5</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>3.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>TRANSP</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Traslado de la agencia de Gualaquiza al sector de Chumpias.</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>TRANSPORTE</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>6</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>10:30:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>11:05:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>7</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>4.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>En el sector de Chumpias en la est # 128175 se encontró quemada una</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>8</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>tira fusible en la linea que va al sector de Yawints. Se revisa la</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>11:05:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>11:35:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>9</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>L/M/T y se encuentra un árbol sobre la misma.</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>10</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>5.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>En el mismo lugar se realiza tala de árboles y desbroce de</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>11</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>vegetación entre las est # 128178, 128179 y 128180, se cambia la tira</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>11:35:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>12:25:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>12</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>fusible  de 1.6 Amp y se verifica que todo quede normal</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>13</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>6.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>TRANSP</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Traslado del sector de Chumpias al sector de San Pedro.</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>TRANSPORTE</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>14</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>12:25:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>12:34:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>15</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>7.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>En San Pedro est # 028549 se encontró quemada una tira fusible en la</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>16</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>linea que va a  Roldós,  Alto Yutuy, se revisa la L/M/T y se</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>12:34:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>13:15:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>17</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>encuentra dicha linea arrancada por una maquinaria desconocida.</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>18</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>8.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>En el mismo lugar en la est # 128559 se realiza empalmado, montaje y</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>19</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>regulado de la L/M/T, se cambia la tira fusible de 12 Amp y se</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>13:15:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>14:05:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>20</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>verifica que todo quede normal.</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>21</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>9.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>TRANSP</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Traslado del sector de San Pedro a la agencia de Gualaquiza..</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>TRANSPORTE</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>22</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>14:05:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>14:30:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>23</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>10.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>EN LA AGENCIA DE GUALAQUIZA SE DETECTA QUE TODO GUALAQUIZA SE</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>24</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>ENCUENTRA SIN SERVICIO ELECTRICO.</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>25</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>11.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>En Gualaquiza en coordinación con el centro de Maniobra se procede a</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>26</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>recorrer la L/M/T desde Gualaquiza hasta La Misión de Bomboiza.</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>14:30:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>15:30:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>27</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>12.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>En el sector de La Misión de Bomboiza en la Est # 029024 se realiza</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>28</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>la apertura de seccionadores y en coordinación con el Centro de</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>15:30:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>15:45:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>29</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Control se realiza una prueba hasta dicho sector, queda normal</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>30</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>13.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Se continúa revisando la línea y en el mismo sector se encuentra la</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>31</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>L/M/T arrancada entre las Est (H) # 31201- 31202 y 237429- 237435,</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>15:45:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>16:15:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>32</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>debido a caída de árbol de gran magnitud</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>33</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>14.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>El árbol se encuentra aproximadamente a 15 metros de la L/M/T, el</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>34</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>mismo que cae debido a los fuertes vientos presentados en el sector.</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>35</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>15.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Para evitar de riesgos y por seguridad se abre los seccionadores barra</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>36</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>en el sector de Sevilla en la Est # 070494, se labora con el apoyo de</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>16:15:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>16:50:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>37</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>la cuadrilla de El Pangui JA y LC</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>38</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>16.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>En La Misión de Bomboiza se realiza retiro del árbol de las líneas,</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>39</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>apertura de la Trocha para despejar dicha línea, empalmado, montaje y</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>16:50:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>19:30:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>40</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>regulado de la línea arrancada Fase B</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>41</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>17.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Se cierra los seccionadores fusible en Sevilla y en coordinación con</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>42</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>C.C. se energiza el Alimentador pero se abre de inmediato, se</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>19:30:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>20:00:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>43</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>continúa revisando la L/M/T y no se localiza la falla.</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>44</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>18.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>En Sevilla, Est.# 181651 se abre el Reconectador Nueva Tarqui y se</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>45</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>realiza una prueba y lo cual queda normal el Alimentador Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>20:00:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>20:15:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>46</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>19.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>PROG</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Se continúa revisando dicha línea y en Guabi Bajo en la Est #</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>ALI</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Gualaquiza</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>CORRECTIVO</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>47</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>127657-127658 se abre los seccionadores barra, se hace una prueba con</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>20:15:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>21:05:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>48</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>el Reconectador Nueva Tarqui y queda normal hasta esta estructura.</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>49</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>20.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>TRANSP</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>Traslado del sector de Sevilla a la agencia de Gualaquiza. Se descarga</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>TRANSPORTE</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>2021-12-25</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>50</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>las herramientas y materiales del vehículo</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>21:05:00</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>21:25:00</w></wrow></wrow><wb></wb></wrow></wrow><w>,</w><wrow><w></w><w>51</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>No</w><w class=\"symbol\"></w><w>21.</w></wrow><w>,</w><wrow><w></w><w>ACTIVIDAD</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w class=\"symbol\"></w><w>SE LABORA: CL, CB de 10:15 a 21:25</w></wrow><w>,</w><wrow><w></w><w>LST/</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>ALIMEN/SUBEST</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>TIPO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>INICIO</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow><w>,</w><wrow><w></w><w>FIN</w><w class=\"symbol\"></w><w>Indeterminate</w></wrow></wrow><wb></wb></wrow></wrow></wrow><wb></wb></wrow><w>,</w><wrow><w></w><w>TypeSystem`Assoc</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><w>TypeSystem`Atom</w><wrow><w></w><wb>[</wb><w>Integer</w><wb>]</wb></wrow></wrow><w>,</w><wrow><w></w><w>TypeSystem`Struct</w><wrow><w></w><wb>[</wb><wrow><w></w><wrow><w></w><wb>{</wb><wrow><w></w><w>No</w><w>,</w><w>ACTIVIDAD</w><w>,</w><w>DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA</w><w>,</w><w>LST/</w><w>,</w><w>ALIMEN/SUBEST</w><w>,</w><w>TIPO</w><w>,</w><w>INICIO</w><w>,</w><w>FIN</w></wrow><wb>}</wb></wrow><w>,</w><wrow><w></w><wb>{</wb><wrow><w></w><w>TypeSystem`AnyType</w><w>,</w><w>TypeSystem`AnyType</w><w>,</w><w>TypeSystem`AnyType</w><w>,</w><w>TypeSystem`AnyType</w><w>,</w><w>TypeSystem`AnyType</w><w>,</w><w>TypeSystem`AnyType</w><w>,</w><w>TypeSystem`AnyType</w><w>,</w><w>TypeSystem`AnyType</w></wrow><wb>}</wb></wrow></wrow><wb>]</wb></wrow></wrow><w>,</w><w>52</w></wrow><wb>]</wb></wrow></wrow><w>,</w><wrow><w></w><wb></wb><wb></wb></wrow></wrow><wb>]</wb></wrow></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{Dataset[Association[0 -> Association[\"No\" -> 1., \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"DEL CENTRO DE CONTROL INFORMAN QUE EN LOS SECTORES DE\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 1 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"YAWINTS Y DE ROLDOS SE ENCUENTRAN SIN SERVICIO ELÉCTRICO\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 2 -> Association[\"No\" -> 2., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"Medición de temperatura corporal: César Lituma: 36.0°C; Cristian\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> \"PREVENTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 3 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"Buele: 36.0°C; Helio Orellana (chofer): 36.0°C y se carga materiales\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"10:15:00\", \"FIN\" -> \"10:30:00\"], 4 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"y herramientas en el vehículo.\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 5 -> Association[\"No\" -> 3., \"ACTIVIDAD\" -> \"TRANSP\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"Traslado de la agencia de Gualaquiza al sector de Chumpias.\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> \"TRANSPORTE\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 6 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> Indeterminate, \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"10:30:00\", \"FIN\" -> \"11:05:00\"], 7 -> Association[\"No\" -> 4., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"En el sector de Chumpias en la est # 128175 se encontró quemada una\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 8 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"tira fusible en la linea que va al sector de Yawints. Se revisa la\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"11:05:00\", \"FIN\" -> \"11:35:00\"], 9 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"L/M/T y se encuentra un árbol sobre la misma.\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 10 -> Association[\"No\" -> 5., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"En el mismo lugar se realiza tala de árboles y desbroce de\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 11 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"vegetación entre las est # 128178, 128179 y 128180, se cambia la tira\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"11:35:00\", \"FIN\" -> \"12:25:00\"], 12 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"fusible  de 1.6 Amp y se verifica que todo quede normal\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 13 -> Association[\"No\" -> 6., \"ACTIVIDAD\" -> \"TRANSP\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"Traslado del sector de Chumpias al sector de San Pedro.\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> \"TRANSPORTE\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 14 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> Indeterminate, \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"12:25:00\", \"FIN\" -> \"12:34:00\"], 15 -> Association[\"No\" -> 7., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"En San Pedro est # 028549 se encontró quemada una tira fusible en la\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 16 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"linea que va a  Roldós,  Alto Yutuy, se revisa la L/M/T y se\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"12:34:00\", \"FIN\" -> \"13:15:00\"], 17 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"encuentra dicha linea arrancada por una maquinaria desconocida.\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 18 -> Association[\"No\" -> 8., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"En el mismo lugar en la est # 128559 se realiza empalmado, montaje y\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 19 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"regulado de la L/M/T, se cambia la tira fusible de 12 Amp y se\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"13:15:00\", \"FIN\" -> \"14:05:00\"], 20 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"verifica que todo quede normal.\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 21 -> Association[\"No\" -> 9., \"ACTIVIDAD\" -> \"TRANSP\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"Traslado del sector de San Pedro a la agencia de Gualaquiza..\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> \"TRANSPORTE\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 22 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> Indeterminate, \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"14:05:00\", \"FIN\" -> \"14:30:00\"], 23 -> Association[\"No\" -> 10., \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"EN LA AGENCIA DE GUALAQUIZA SE DETECTA QUE TODO GUALAQUIZA SE\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 24 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"ENCUENTRA SIN SERVICIO ELECTRICO.\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 25 -> Association[\"No\" -> 11., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"En Gualaquiza en coordinación con el centro de Maniobra se procede a\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 26 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"recorrer la L/M/T desde Gualaquiza hasta La Misión de Bomboiza.\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"14:30:00\", \"FIN\" -> \"15:30:00\"], 27 -> Association[\"No\" -> 12., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"En el sector de La Misión de Bomboiza en la Est # 029024 se realiza\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 28 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"la apertura de seccionadores y en coordinación con el Centro de\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"15:30:00\", \"FIN\" -> \"15:45:00\"], 29 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"Control se realiza una prueba hasta dicho sector, queda normal\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 30 -> Association[\"No\" -> 13., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"Se continúa revisando la línea y en el mismo sector se encuentra la\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 31 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"L/M/T arrancada entre las Est (H) # 31201- 31202 y 237429- 237435,\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"15:45:00\", \"FIN\" -> \"16:15:00\"], 32 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"debido a caída de árbol de gran magnitud\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 33 -> Association[\"No\" -> 14., \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"El árbol se encuentra aproximadamente a 15 metros de la L/M/T, el\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 34 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"mismo que cae debido a los fuertes vientos presentados en el sector.\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 35 -> Association[\"No\" -> 15., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"Para evitar de riesgos y por seguridad se abre los seccionadores barra\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 36 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"en el sector de Sevilla en la Est # 070494, se labora con el apoyo de\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"16:15:00\", \"FIN\" -> \"16:50:00\"], 37 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"la cuadrilla de El Pangui JA y LC\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 38 -> Association[\"No\" -> 16., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"En La Misión de Bomboiza se realiza retiro del árbol de las líneas,\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 39 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"apertura de la Trocha para despejar dicha línea, empalmado, montaje y\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"16:50:00\", \"FIN\" -> \"19:30:00\"], 40 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"regulado de la línea arrancada Fase B\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 41 -> Association[\"No\" -> 17., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"Se cierra los seccionadores fusible en Sevilla y en coordinación con\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 42 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"C.C. se energiza el Alimentador pero se abre de inmediato, se\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"19:30:00\", \"FIN\" -> \"20:00:00\"], 43 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"continúa revisando la L/M/T y no se localiza la falla.\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 44 -> Association[\"No\" -> 18., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"En Sevilla, Est.# 181651 se abre el Reconectador Nueva Tarqui y se\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 45 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"realiza una prueba y lo cual queda normal el Alimentador Gualaquiza\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"20:00:00\", \"FIN\" -> \"20:15:00\"], 46 -> Association[\"No\" -> 19., \"ACTIVIDAD\" -> \"PROG\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"Se continúa revisando dicha línea y en Guabi Bajo en la Est #\", \"LST/\" -> \"ALI\", \"ALIMEN/SUBEST\" -> \"Gualaquiza\", \"TIPO\" -> \"CORRECTIVO\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 47 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"127657-127658 se abre los seccionadores barra, se hace una prueba con\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"20:15:00\", \"FIN\" -> \"21:05:00\"], 48 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"el Reconectador Nueva Tarqui y queda normal hasta esta estructura.\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate], 49 -> Association[\"No\" -> 20., \"ACTIVIDAD\" -> \"TRANSP\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"Traslado del sector de Sevilla a la agencia de Gualaquiza. Se descarga\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> \"TRANSPORTE\", \"INICIO\" -> \"2021-12-25\", \"FIN\" -> \"2021-12-25\"], 50 -> Association[\"No\" -> Indeterminate, \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"las herramientas y materiales del vehículo\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> \"21:05:00\", \"FIN\" -> \"21:25:00\"], 51 -> Association[\"No\" -> 21., \"ACTIVIDAD\" -> Indeterminate, \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\" -> \"SE LABORA: CL, CB de 10:15 a 21:25\", \"LST/\" -> Indeterminate, \"ALIMEN/SUBEST\" -> Indeterminate, \"TIPO\" -> Indeterminate, \"INICIO\" -> Indeterminate, \"FIN\" -> Indeterminate]], TypeSystem`Assoc[TypeSystem`Atom[Integer], TypeSystem`Struct[{\"No\", \"ACTIVIDAD\", \"DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA\", \"LST/\", \"ALIMEN/SUBEST\", \"TIPO\", \"INICIO\", \"FIN\"}, {TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType, TypeSystem`AnyType}], 52], Association[]]}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "90113c36-6895-4e56-aa67-8681568c867e",
+     "metadata": {
+      "cellLabel": "Out[187]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697839937831,
+     "endTime": 1697839939266
+    },
+    "executionOrder": 187,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "\"tabula.read_pdf( \\\"C:\\\\\\\\Users\\\\\\\\epalacios\\\\\\\\GIT\\\\\\\\admin_ot\\\\\\\\TestDirectories\\\\\\\\0_ImportPdfOT\\\\\\\\3_ok_cl_21_items.pdf\\\", pages=[2], relative_area=True, relative_columns=True, area=[9.5,0,80,100], columns=[7.10, 13.80, 57.14, 60.71, 73.57, 81.55, 88.57],encode=\\\"latin1\\\")\"",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>tabula.read_pdf( \"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_ot\\\\TestDirectories\\\\0_ImportPdfOT\\\\3_ok_cl_21_items.pdf\", pages=[2], relative_area=True, relative_columns=True, area=[9.5,0,80,100], columns=[7.10, 13.80, 57.14, 60.71, 73.57, 81.55, 88.57],encode=\"latin1\")</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"tabula.read_pdf( \\\"C:\\\\\\\\Users\\\\\\\\epalacios\\\\\\\\GIT\\\\\\\\admin_ot\\\\\\\\TestDirectories\\\\\\\\0_ImportPdfOT\\\\\\\\3_ok_cl_21_items.pdf\\\", pages=[2], relative_area=True, relative_columns=True, area=[9.5,0,80,100], columns=[7.10, 13.80, 57.14, 60.71, 73.57, 81.55, 88.57],encode=\\\"latin1\\\")\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "73dc7497-e6c6-4e7c-8b95-65d7238c8b0e",
+     "metadata": {
+      "cellLabel": "Out[178]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697839014298,
+     "endTime": 1697839014464
+    },
+    "executionOrder": 178,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "(* Guardar el Dataset para posterior analisis *)\r\nDimensions[ act1[[1]] ]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wrow><w></w><w>52</w><w>,</w><w>8</w></wrow><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{52, 8}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "6edfe1cc-b547-4b11-88d8-98ef49976009",
+     "metadata": {
+      "cellLabel": "Out[192]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697840003482,
+     "endTime": 1697840003682
+    },
+    "executionOrder": 192,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "Put[act1[[1]],FileNameJoin[{raizAdminOT,\"dsActWolframEngine.m\"}]]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697840566558,
+     "endTime": 1697840566646
+    },
+    "executionOrder": 196,
+    "success": true
+   }
+  },
+  {
+   "kind": 2,
+   "value": "raizAdminOT",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>C:\\Users\\epalacios\\GIT\\admin_OT</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_OT\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "4dd7a6c7-bf5e-4fd7-951c-101cc4ce2a46",
+     "metadata": {
+      "cellLabel": "Out[193]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {
+    "timing": {
+     "startTime": 1697840150714,
+     "endTime": 1697840150896
+    },
+    "executionOrder": 193,
+    "success": true
+   }
+  },
+  {
+   "kind": 1,
+   "value": "### Verificar que sea una ruta aun archivo valido",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "func[x_]:=\r\n    Enclose[\r\n\r\n        ConfirmAssert[ StringQ[x],<|\"Head\" -> Head[x]|>];\r\n        \r\n        Return[ ToUpperCase[x] ]\r\n        \r\n    ]\r\n\r\n    ",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "test = func[\"this is a Real Test\"];\r\nIf[ FailureQ@test,Print@\"log file\",test]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>THIS IS A REAL TEST</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"THIS IS A REAL TEST\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "c4694a4d-5bf4-4925-a5b8-aca919216e5b",
+     "metadata": {
+      "cellLabel": "Out[93]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "test = func[42];\r\nIf[ FailureQ@test,Print@\"log file\",test]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<pre>log file\n</pre>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"log file\\n\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "dc941740-06cf-4693-9a61-32bca6a0489f",
+     "metadata": {
+      "cellLabel": "",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "test",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>Failure</w><wrow><w></w><wb>[</wb><wrow><w></w><w>ConfirmationFailed</w><w>,</w><wrow><w></w><wb></wb><wrow><w></w><wrow><w></w><w>MessageTemplate</w><w class=\"symbol\"></w><w>Assertion `` failed.</w></wrow><w>,</w><wrow><w></w><w>MessageParameters</w><w class=\"symbol\"></w><wrow><w></w><wb>{</wb><wrow><w></w><w>StringQ</w><wrow><w></w><wb>[</wb><w>42</w><wb>]</wb></wrow></wrow><wb>}</wb></wrow></wrow><w>,</w><wrow><w></w><w>ConfirmationType</w><w class=\"symbol\"></w><w>ConfirmAssert</w></wrow><w>,</w><wrow><w></w><w>HeldTest</w><w class=\"symbol\"></w><wrow><w></w><w>Hold</w><wrow><w></w><wb>[</wb><wrow><w></w><w>StringQ</w><wrow><w></w><wb>[</wb><w>42</w><wb>]</wb></wrow></wrow><wb>]</wb></wrow></wrow></wrow><w>,</w><wrow><w></w><w>Test</w><w class=\"symbol\"></w><w>False</w></wrow><w>,</w><wrow><w></w><w>Information</w><w class=\"symbol\"></w><wrow><w></w><wb></wb><wrow><w></w><w>Head</w><w class=\"symbol\"></w><w>Integer</w></wrow><wb></wb></wrow></wrow></wrow><wb></wb></wrow></wrow><wb>]</wb></wrow></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Failure[\"ConfirmationFailed\", Association[\"MessageTemplate\" -> \"Assertion `` failed.\", \"MessageParameters\" -> {HoldForm[StringQ[42]]}, \"ConfirmationType\" -> \"ConfirmAssert\", \"HeldTest\" -> Hold[StringQ[42]], \"Test\" -> False, \"Information\" -> Association[\"Head\" -> Integer]]]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "1c608738-06c0-4bcc-85d1-9f8c12b6fee8",
+     "metadata": {
+      "cellLabel": "Out[96]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "## Pruebas de campo de la funcion: GestionarOT.wl -> getPdfList",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "### Definiciones Globales",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Get[FileNameJoin[{$HomeDirectory,\"GIT\",\"admin_OT\",\"Packages\",\"GestionarOT.wl\"}]]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "TodosOTtest = getPdfList[raizTestOT];\r\nLength[TodosOTtest]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Length[TodosOTtest]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>604</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "604",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "436b1543-723a-4500-9b01-24eac5c9c35f",
+     "metadata": {
+      "cellLabel": "Out[8]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "Se define una función para identificar las cadenas de caracteres que contengan caracteres no imprimibles (ñ, ó, á ) \r\n__________________________",
+   "languageId": "markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "TildeQ[str_String] := Not[PrintableASCIIQ[str]]",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Position[ TodosOTtest, _?  Not[PrintableASCIIQ[#]]& ]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><wb>{</wb><wb>}</wb></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "{}",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "9e1c02a2-356a-4bc2-b494-a616644bbebe",
+     "metadata": {
+      "cellLabel": "Out[12]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "TodosOTtest[[12]]",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><w>C:\\Users\\epalacios\\GIT\\admin_ot\\TestDirectories\\4_SingleTilde_ñ_Gruop\\06 CUADRILLA GUAYZIMI\\Orden de trabajo Guayzimi 02-07-2023 (CQ).pdf</w></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "\"C:\\\\Users\\\\epalacios\\\\GIT\\\\admin_ot\\\\TestDirectories\\\\4_SingleTilde_ñ_Gruop\\\\06 CUADRILLA GUAYZIMI\\\\Orden de trabajo Guayzimi 02-07-2023 (CQ).pdf\"",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "57ee0820-fdc8-42d9-9b6b-472cb9a0f353",
+     "metadata": {
+      "cellLabel": "Out[138]= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 1,
+   "value": "Se prueba la importacion de un directorio y un archivo conteniendo un caracter Non Ascii\r\n____________",
+   "languageId": "markdown",
+   "mime": "text/markdown",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "Import[TodosOTtest[[12]],\"Plaintext\"]//Short",
+   "languageId": "wolfram",
+   "outputs": [
+    {
+     "items": [
+      {
+       "data": "<div class=\"wexpr\"><wrow><w></w><w>≪</w><w>4328</w><w>≫</w></wrow></div>",
+       "mime": "x-application/wolfram-language-html"
+      },
+      {
+       "data": "Short[\"EMPRESA ELÉCTRICA REGIONAL DEL SUR S A\\n¡La energía somos todos!\\nORDEN DE TRABAJO No\\nCÓDIGO: GERENCIA: OPERACIÓN Y MANTENIMIENTO\\n110,297\\nP-GEGEA-12-F01\\nGuayzimi Z1 (Cuadrilla. Nro. 7) NM: 142\\nSitio: Shaime Fecha: domingo, 02 de julio del 2023\\nDESCRIPCIÓN DE LA ACTIVIDAD / PROYECTO / TRABAJO\\nSOLICITANTE DEL PERMISO DE TRABAJO CARGO | FIRMA MOVILIZACIÓN\\nResponsable: QUIROGA ORDONEZ CARLOS HERNAN JECU\\nColaboradores:\\nCACAY LUZURIAGA ASDRUBAL HUMBERTO LIN3\\nNúmero/Código de vehículo: R-126\\nPlaca: LBC-7712\\nDescripción:\\nCAMIONETA CHEVROLET LUV DMAX CRDI 2.5 CD VERDE\\nRentado: SI\\nPropietario: BENAVIDES CALVA JOSE AGUSTIN\\nChofer: BENAVIDES CALVA JOSE AGUSTIN\\nTIPO (S) DE TRABAJO:\\nA - SIN VOLTAJE\\nCON ENERGÍA/VOLTAJE - BAJO VOLTAJE\\nCON ENERGÍA/VOLTAJE - MEDIO VOLTAJE\\nTRABAJO EN ALTURA - SOBRE NIVEL\\nDESCRIPCIÓN DEL TRABAJO A REALIZAR:\\nAtención de daño reportados Centro de Control (mensaje WhantsApps)\\nFECHA DE INICIO: domingo, 02 de julio del 2023 TIEMPO ESTIMADO DE DURACIÓN (HORAS): 8\\nANÁLISIS DE SEGURIDAD EN EL TRABAJO - AST\\nRIESGOS EXISTENTES: CONSECUENCIAS PROBABLES: ELEMENTOS DE PREVENCIÓN A UTILIZAR\\nBIOLÓGICOS Virus Infección viral Usar implementos de seguridad sanitaria (mascarilla, guantes, gel, alcohol)\\nELÉCTRICOS Electrización (Paso energ. x cuerp Electrocución o electrización Epps\\nERGONÓMICOS Posiciones en el trabajo Lesiones músculo esqueléticas Pausa activa\\nMECÁNICOS Caída de objetos Golpes en cabeza y cuerpo Epps\\nMEDIDAS DE SEGURIDAD:\\nMEDIDAS ESTADO EQUIPOS DE PROTECCIÓN ESTADO\\nMedio de transporte BUENO\\nTarjetas de Peligro / Candados REGULAR\\nA. Protección para la Cabeza (Casco con barbiquejo) BUENO\\nD. Protección Respiratoria (Mascarilla, respiradores) BUENO\\nE. Ropa de Trabajo (Uniforme entragado por EERSSA) BUENO\\nG. Protección manos (Guantes de acuerdo nivel voltaje) BUENO\\nH. Protección manos (Guantes de trabajo - cuero nitrilo) BUENO\\nI. Protección extremidades inferiores (Calzado dieléctrico BUENO\\nL. Equipo de posicionamiento (Cinturón seguridad) BUENO\\nM. Andamios y/o escaleras (Herr. trab. en altura) BUENO\\nPRECAUCIONES ADICIONALES O CARENCIAS:\\nPRECAUCIONES: Cumplir con las 5 reglas de Oro\\nCARENCIAS: RENOVACION DE GUANTES DE TRABAJO\\nSOLICITUD DE DESCONEXIÓN ELÉCTRICA\\nSolicitud de desconexión o aislamiento eléctrico del siguiente equipo:\\nEquipo No.: Ubicación: Nombre a quien solicitó:\\nDescripción: Fecha:\\nCONFIRMACIÓN DE DESCONEXIÓN ELÉCTRICA\\nConfirma que el equipo ESTÁ DESCONECTADO electricamente desde:\\nHora y fecha (h:m:s día/mes/año): Firma:\\nInstalación de puesta a tierra: Medidas complementarias:\\nTRABAJO CANCELADO (Si aplica)\\nHora y fecha (h:m:s día/mes/año): Responsable:\\nCausas de cancelación del trabajo:\\nFirma:\\nAUTORIZACIONES:\\nNOMBRE: QUIROGA ORDONEZ CARLOS HERNAN PALACIOS MERINO ERNESTO VLADIMIR MARQUEZ APOLO JHONNY FABIAN\\nFECHA: domingo, 02 de julio del 2023 JEFE ZONAL INGENIERO 1\\nFIRMA:\\nSOLICITADO POR: AUTORIZADO POR: APROBADO POR:\\nGuayzimi Z1 (Cuadrilla. Nro. 7) Fecha: domingo, 02 de julio del 2023 No: 110,297\\nVEHÍCULO: Número: R-126 Placa: LBC-7712 Rentado: SI Chofer: BENAVIDES CALVA JOSE AGUSTIN\\nKILOMETRAJE: Inicial: 223,660 Final: 223,746 Recorridos: 86\\nA C T I V I D A D E S\\nNo ACTIVIDAD DESCRIPCIÓN DE LA ACTIVIDAD REALIZADA LST/ALIMEN/SUBEST TIPO INICIO FIN\\n1 NO PROG Guayzimi, bodega se realiza coordinación de trabajos se carga el\\nvehículo materiales y herramientas\\nRUTINARIA 2023-07-02\\n13:59:00\\n2023-07-02\\n14:10:00\\n2 TRANSP DAÑO REPORTADO POR CC. (Mensaje de WhatsApp)\\nNos trasladamos desde Guayzimi hasta Shaime informan sector sin\\nenergía\\nTRANSPORTE 2023-07-02\\n14:10:00\\n2023-07-02\\n15:50:00\\n3 NO PROG REPORTADO (11:46) En [lugar] Est 72189, se rehabilita trafo # 18445\\nde 25KVA a las (17:10) Causa: impacto vehículo a tensor en poste\\n72193\\nALI Paquisha CORRECTIVO 2023-07-02\\n15:50:00\\n2023-07-02\\n17:20:00\\n4 Ocupa: 1 varilla retensión 1107\\n5 TRANSP Nos trasladamos de Shaime a Guayzimi. Bodega descarga materiales y\\nherramientas del vehículo\\nTRANSPORTE 2023-07-02\\n17:20:00\\n2023-07-02\\n19:01:00\\n6 SE LABORA: CQ, AC de: 13:59 a 19:01\\nOBSERVACIONES:\\nTRABAJO TERMINADO\\nTerminado:\\nFecha y hora:\\nTERMINADO\\n02/07/2023 19:01:00 Observaciones: Se reportan accidentes?\\nResponsable: Aceptación: NO\\nQUIROGA ORDONEZ CARLOS HERNAN PALACIOS MERINO ERNESTO VLADIMIR\\n\"]",
+       "mime": "text/plain"
+      }
+     ],
+     "id": "4d8b4aa1-81a7-4032-9c21-9f662d771507",
+     "metadata": {
+      "cellLabel": "Out[141]//Short= ",
+      "isBoxData": false
+     }
+    }
+   ],
+   "metadata": {},
+   "executionSummary": {}
+  },
+  {
+   "kind": 2,
+   "value": "",
+   "languageId": "wolfram",
+   "outputs": [],
+   "metadata": {},
+   "executionSummary": {}
+  }
+ ]
+}
