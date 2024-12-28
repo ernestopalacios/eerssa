@@ -6,9 +6,9 @@ from .constants import BoxesValues
 
 
 # Dask
-from dask.distributed import LocalCluster
+#from dask.distributed import LocalCluster
   # Start and stop the client for every job (?)
-client = LocalCluster().get_client()
+#client = LocalCluster().get_client()
 
 
 

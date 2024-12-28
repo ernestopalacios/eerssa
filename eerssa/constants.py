@@ -2,7 +2,7 @@ from enum import Enum
 
 # Versioning and files
 class Current(Enum):
-  VERSION = '0.10.1'
+  VERSION = '0.10.2'
 
 
 # VALUES OF LINES FOR TABLE AND TEXT EXTRACTION
